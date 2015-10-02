@@ -1,0 +1,49 @@
+{% extends "santech/template.html" %}
+{% load staticfiles %}
+{% block meta %}
+    <meta name="Description" content="Блог и новости компании {{ office.name }}">
+    <meta name="Keywords" content="{% for blog in blogs %}{{ blog.name }},{% endfor %}">
+{% endblock meta %}
+{% block body %}
+    {% for blog in blogs %}
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h2 class="panel-title">{{ blog.name }}</h2>
+                    <span class="text-right">{{ blog.pub_date }}</span>
+                </div>
+                <div class="panel-body">
+                    {{ blog.text|safe|truncatewords_html:50 }}
+                    <a href="{% url 'blog_article' blog.pk %}">
+                        <button class="btn readmore-btn pull-right" type="button">Читать далее</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="col-md-12 text-center">
+        <div class="pagination">
+            <span class="step-links">
+                <ul class="pagination pagination-lg">
+                    {% if blogs.has_previous %}
+                        <li class="previous readmore-btn">
+                            <a href="?page={{ blogs.previous_page_number }}" aria-label="Previous" class="readmore-btn">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% for page in blogs.paginator.page_range %}
+                        <li {% if page == blogs.number %}class="active readmore-btn"{% endif %}><a href="?page={{ page }}" class="readmore-btn">{{ page }}</a></li>
+                    {% endfor %}
+                    {% if blogs.has_next %}
+                        <li class="next readmore-btn">
+                            <a href="?page={{ blogs.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </span>
+        </div>
+    </div>
+{% endblock body %}

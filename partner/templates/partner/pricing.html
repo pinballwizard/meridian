@@ -1,0 +1,58 @@
+{% extends "partner/template.html" %}
+{% block meta %}
+    <meta name="Description" content="Цены на услуги компании Сервис-Партнер">
+    <meta name="Keywords" content="{% for item in prices %}{{ item.name }},{% endfor %}">
+{% endblock meta %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="page-header text-center">
+                    <h3>Цены<br>
+                        <small>В данном разделе представлены актуальные предложения компании</small>
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading"><b>Оборудование с установкой</b></div>
+                    <table class="table">
+                        <tr>
+                            <th>Название</th>
+                            <th>Цена в рублях</th>
+                        </tr>
+                        {% for item in equipment_prices %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading"><b>Мониторинг</b></div>
+                    <table class="table">
+                        <tr>
+                            <th>Название</th>
+                            <th>Цена в рублях</th>
+                        </tr>
+                        {% for item in monitoring_prices %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="alert alert-info text-center">
+                    Еще больше информации о скидках и
+                    акциях нашей компании Вы можете узнать, позвонив по телефону<br>
+                    {{ office.phone1 }}
+                    или связавшись с нами через <b><a href="{% url 'contacts' %}">сайт</a></b>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

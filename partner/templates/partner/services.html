@@ -1,0 +1,25 @@
+{% extends "partner/template.html" %}
+{% block meta %}
+    <meta name="Description" content="Возможности компании Сервис-Партнер">
+    <meta name="Keywords" content="{% for service in services %}{{ service.header }},{% endfor %}">
+{% endblock meta %}
+{% block body %}
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="page-header text-center">
+                    <h3>Сервисы компании</h3>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    {% for service in services %}
+                        <div class="col-md-4 text-justify">
+                            <p>{{ service.text|safe }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

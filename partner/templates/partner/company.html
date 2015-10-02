@@ -1,0 +1,33 @@
+{% extends "partner/template.html" %}
+{% block meta %}
+    <meta name="Description" content="Партнеры и описание компании Сервис-Партнер">
+    <meta name="Keywords" content="{% for partner in partners %}{{ partner.name }},{% endfor %}">
+{% endblock meta %}
+{% block body %}
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h3 class="title">Сервис-Партнер<br>
+                        <small>Здесь вы можете получить информацию о компании</small>
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-8">
+                {{ about_company.text|safe }}
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <h2 class="title">Наши партнеры</h2>
+        <div class="row">
+            {% for partner in partners %}
+                <figure class="col-md-2">
+                    <a href={{partner.url}}>
+                        <img class="img-thumbnail" src="{{partner.logo.url}}" class="img-responsive" height="100%" width="100%"/>
+                    </a>
+                </figure>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

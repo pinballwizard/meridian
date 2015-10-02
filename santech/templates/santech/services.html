@@ -1,0 +1,28 @@
+{% extends "santech/template.html" %}
+{% load staticfiles %}
+{% block meta %}
+    <meta name="Description" content="Возможности компании {{ office.name }}">
+    <meta name="Keywords" content="{% for service in services %}{{ service.header }},{% endfor %}">
+{% endblock meta %}
+{% block body %}
+    {% for service in services %}
+        <div class="panel">
+            <div class="panel-heading text-center">
+                <h1 class="panel-title">{{ service.header }}</h1>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <img class="media-object" src="{{ service.image.url }}" height="auto" width="200px"/>
+                    </div>
+                    <div class="media-body text-justify">
+                        {{ service.text|safe|truncatewords:200 }}
+                    </div>
+                </div>
+                <a href="{% url 'services_article' service.pk %}">
+                    <button class="btn readmore-btn pull-right" type="button">Читать далее</button>
+                </a>
+            </div>
+        </div>
+    {%  endfor %}
+{% endblock body %}

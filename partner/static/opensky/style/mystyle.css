@@ -1,0 +1,328 @@
+@font-face {
+    font-family: "Azoft Sans";
+}
+
+html{
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    min-height: 100%;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 21px;
+    color: #404040;
+    margin-bottom: 100px;
+}
+
+.header {
+    color: #ffffff;
+    font-weight: bold;
+    padding-bottom: 1%;
+}
+
+.navbar-brand{
+    font-weight: bold;
+    padding-top: 6px;
+}
+
+.navbar-brand>img{
+    display: inline;
+}
+
+.navbar-default .navbar-brand,
+.navbar-brand:hover{
+    color: #FFFFFF !important;
+}
+
+.navbar-default{
+    margin-bottom: 0;
+    background-color: #548DBF;
+    border: none;
+}
+
+.navbar-default .mynav>li>a {
+    color:#FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+}
+.dropdown-menu>li>a{
+    font-size: 14px;
+}
+.navbar-collapse{
+    padding: 0;
+}
+
+.nav>li:hover,
+.nav>li:active,
+.nav>.active>a,
+.nav>.open>a{
+    background-color: #FFFFFF !important;
+    border-radius: 10px 10px 0 0;
+    color: #404040;
+}
+
+li>a{
+    font-size: 18px;
+}
+
+.icon-bar{
+    background-color: #FFFFFF !important;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 65px;
+}
+.footer>.container,
+.footer>.container>.row,
+.footer>.container>.row>div{
+    height: 100%;
+    background-color: #EBEEF2;
+}
+
+.footer>.container>.row>div:last-child{
+    padding: 15px 15px 0 10px;
+}
+.footer>.container>.row>div{
+    font-size: 12px;
+}
+
+.carousel-section {
+    background-color: #EBEEF2;
+}
+.carousel-inner>.item>img{
+    margin: auto;
+    padding: 10%;
+    max-width: 75%;
+}
+.carousel-caption{
+    color: #204d74;
+    text-shadow: 0 0 2px #FFF;
+}
+
+.carousel-control.right,
+.carousel-control.left{
+    background-image: none;
+}
+
+.glyphicon-chevron-left,
+.glyphicon-chevron-right{
+    color: #548DBF;
+}
+
+.carousel-indicators>li{
+    background-color: #548DBF;
+}
+
+.carousel-indicators .active{
+    background-color: #204d74;
+}
+
+.jumbotron{
+    background-color: #96A7C4;
+    color: #FFFFFF;
+}
+.jumbotron>p{
+    font-size: 16px;
+}
+
+.features-section {
+    height: 100%;
+}
+
+.features-section>.row>.col-md-8{
+    padding-left: 3%;
+    /*background-color: #EBEEF2;*/
+}
+
+.product{
+    height: 100%;
+}
+
+.panel-primary{
+    /*height: auto;*/
+    /*height: 300px;*/
+}
+
+.panel-body>figure{
+    text-align:center;
+}
+
+.rights{
+    font-weight: bold;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover{
+    border: none;
+    background-color: #EBEEF2;
+}
+
+#myTab{
+    border-bottom: none;
+}
+
+.contact-btn{
+    margin-top: 10px;
+}
+
+th:last-child,
+td:last-child{
+    text-align: right;
+}
+
+.s-l{
+    display: inline-block;
+    height: 33px;
+    width: 33px;
+    background: url('../images/ikonki-small.png') no-repeat;
+    cursor: pointer;
+}
+
+.vk{
+    background-position: -137px -55px;
+}
+
+.vk:hover,
+.vk:active{
+    background-position: -137px -10px;
+}
+
+.ok{
+    background-position: -178px -55px;
+}
+
+.ok:hover,
+.ok:active{
+    background-position: -178px -10px;
+}
+
+.fb{
+    background-position: -12px -55px;
+}
+
+.fb:hover,
+.fb:active{
+    background-position: -12px -10px;
+}
+
+.tw{
+    background-position: -53px -55px;
+}
+
+.tw:hover,
+.tw:active{
+    background-position: -53px -10px;
+}
+
+.li{
+    background-position: -95px -55px;
+}
+
+.li:hover,
+.li:active{
+    background-position: -95px -10px;
+}
+
+.yt{
+    background-position: -220px -55px;
+}
+
+.yt:hover,
+.yt:active{
+    background-position: -220px -10px;
+}
+
+.in{
+    background-position: -261px -55px;
+}
+
+.in:hover,
+.in:active{
+    background-position: -261px -10px;
+}
+
+.btn,
+.nav-tabs{
+    outline: none !important;
+}
+
+.phone-header{
+    font-family: 'Azoft Sans', sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+}
+.phone-number{
+    font-size: 18px;
+}
+
+.logo-text{
+    vertical-align: middle;
+}
+
+.logo-text>span:first-child{
+    line-height: 35px;
+    font-size: 36px;
+    font-family: 'Azoft Sans', sans-serif;
+}
+.logo-text>span:last-child{
+    font-size: 14px;
+}
+
+.main-logo{
+    padding-top: 10px;
+    margin-bottom: 10px;
+    background: #548DBF;
+    color: #FFFFFF;
+}
+
+.enter{
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 10px;
+}
+.enter>a,
+.enter>a:hover,
+.enter>a:active{
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.features-img{
+    float: left;
+    padding: 3%;
+    width: 35%;
+    height: 35%;
+}
+
+.modalClick{
+    cursor: pointer;
+}
+
+.mImage{
+    /*width: 200px;*/
+    /*height: inherit;*/
+    /*overflow: hidden;*/
+}
+
+@media (min-width: 768px){
+    /*.navbar-nav {*/
+        /*margin: 0 auto;*/
+        /*display: table;*/
+        /*table-layout: auto;*/
+        /*float: none;*/
+        /*width: 100%;*/
+    /*}*/
+    .navbar-nav>li {
+        display: table-cell;
+        float: none;
+        text-align: center;
+    }
+}

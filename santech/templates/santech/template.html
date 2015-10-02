@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    {% block meta %}
+    {% endblock meta %}
+    <meta name="viewport" http-equiv="Content-Type" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <script src="{% static 'santech/script/jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'santech/bootstrap/js/bootstrap.js' %}"></script>
+    <link href="{% static 'santech/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Kurale&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="{% static 'santech/script/myscript.js' %}"></script>
+    <link href="{% static 'santech/style/mystyle.css' %}" rel="stylesheet">
+    <title>Сантех</title>
+</head>
+<body>
+    {% block header %}
+        <header class="sm-header">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row text-center text-nowrap">
+                    <div class="col-md-3 col-sm-6 col-xs-6 col-md-offset-2">
+                        <span class="firm-name">{{ office.name }}</span><br>
+                        <span>Сантехмонтаж в Красноярске</span>
+                    </div>
+                    <div class="col-md-2 hidden-sm hidden-xs">
+                        <div class="border">
+                            <a href="{% url 'contacts' %}">
+                                <button class="btn yellow-btn" type="button">Оставить заявку</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6 phone text-right">
+                        <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+                        {{ office.phone1 }} <br>
+                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                        {{ office.phone2 }}
+                    </div>
+                </div>
+            </div>
+        </header>
+    {% endblock header %}
+    <nav class="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href="{% url 'home' %}"><nobr>О компании</nobr></a></li>
+                            <li><a href="{% url 'blog' %}">Новости</a></li>
+                            <li><a href="{% url 'services' %}">Услуги</a></li>
+                            <li><a href="{% url 'pricing' %}">Цены</a></li>
+                            <li><a href="{% url 'reviews' %}"><nobr>Наши работы</nobr></a></li>
+                            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 content">
+                {% block body %}
+                {% endblock body %}
+            </div>
+        </div>
+        <div class="col-md-2 navbar-fixed-bottom">
+            <div class="text-center">
+                <button type="button" class="yellow-btn btn call-popover float-btn" data-content="{{ ptext }}" data-toggle="popover">
+                    Не знаете с чего начать?
+                    <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-2 col-md-offset-10 hidden-xs hidden-sm navbar-fixed-bottom">
+            <div class="text-center">
+                <button type="button" class="yellow-btn btn float-btn" data-toggle="modal" data-target="#reviewModal">
+                    Оставить отзыв
+                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                </button>
+                <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h3 class="modal-title">Оцените нашу работу</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{% url 'reviews' %}" role="form" method="POST" id="reviewForm">
+                                    {% csrf_token %}
+                                    {{ reviewForm.non_field_errors }}
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group fieldWrapper">
+                                                {{ reviewForm.owner }}
+                                            </div>
+                                            <div class="form-group fieldWrapper">
+                                                {{ reviewForm.header }}
+                                            </div>
+                                            <div class="form-group fieldWrapper">
+                                                {{ reviewForm.grade }}
+                                                <span class="review-glyph glyphicon glyphicon-star"></span>
+                                                <span class="review-glyph glyphicon glyphicon-star"></span>
+                                                <span class="review-glyph glyphicon glyphicon-star"></span>
+                                                <span class="review-glyph glyphicon glyphicon-star"></span>
+                                                <span class="review-glyph glyphicon glyphicon-star"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            {{ reviewForm.text }}
+                                        </div>
+                                    </div>
+                                </form>
+                                {% if review_thank %}
+                                    <span>Благодарим за отзыв!</span>
+                                {% endif %}
+                            </div>
+                            <div class="modal-footer">
+                                <div class="border">
+                                    <button class="btn yellow-btn" type="submit" form="reviewForm">Отправить</button>
+                                </div>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-2">
+                    {{ office.name }}<br>
+                    Адрес: {{ office.address }}<br>
+                    Телефон: {{ office.phone1 }}
+                </div>
+                <div class="col-sm-2 hidden-sm hidden-xs text-center">
+                    Мы в социальных сетях:<br>
+                    {% for widget in widgets %}
+                        <div class="s-l {{ widget.name }}"><a href="{{ widget.url }}"></a></div>
+                    {% endfor %}
+                </div>
+                <div class="col-sm-3 hidden-xs text-right">
+                    <span>2015<br> created by
+                        <a href="https://github.com/craby-c">craby</a> &
+                        <a href="https://github.com/pinballwizard">pinballwizard</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
